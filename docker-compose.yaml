@@ -1,0 +1,30 @@
+version: '3'
+services:
+   api:
+    container_name: potential-crud-api
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports: 
+      - "8086:80"
+    volumes: 
+      - ./api:/usr/share/nginx
+    networks: 
+      - potential-crud
+
+   database:
+    image: mysql:5.7.31
+    command: --innodb-use-native-aio=0
+    container_name: potential-crud-db
+    ports:
+      - "3308:3306"
+    volumes:
+      - ./docker/mysql:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: potential_crud_db
+      MYSQL_ROOT_PASSWORD: root
+    networks: 
+      - potential-crud
+networks:
+  potential-crud:
+    driver: bridge
