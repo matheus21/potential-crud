@@ -9,6 +9,7 @@ class Developer extends Model
 {
     protected $table = 'developers';
     protected $primaryKey = 'id';
+    protected $hidden = ['created_at', 'updated_at'];
 
     protected $fillable = [
         'nome',

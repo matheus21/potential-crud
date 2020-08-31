@@ -51,7 +51,7 @@ class DeveloperRepository implements DeveloperRepositoryInterface
 
     public function getDeveloper(int $id): ?Developer
     {
-        return $this->model()::find($id)->makeHidden(['created_at', 'updated_at']);
+        return $this->model()::find($id);
     }
 
     public function insertDeveloper(array $data): bool
