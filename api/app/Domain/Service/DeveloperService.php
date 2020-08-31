@@ -30,6 +30,7 @@ class DeveloperService
     public function getPaginatedDevelopers(string $term): LengthAwarePaginator
     {
         $result = $this->repository->getPaginatedDevelopers($term);
+
         if(empty($result->items())) {
             throw new NotFoundHttpException(trans('exception.developer.not_found'));
         }
@@ -40,6 +41,7 @@ class DeveloperService
     public function getDeveloper(int $id): Developer
     {
         $result = $this->repository->getDeveloper($id);
+
         if(is_null($result)) {
             throw new NotFoundHttpException(trans('exception.developer.not_found'));
         }

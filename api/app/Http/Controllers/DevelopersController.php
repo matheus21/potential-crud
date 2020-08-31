@@ -31,7 +31,7 @@ class DevelopersController extends Controller
 
     public function getDevelopers(Request $request): JsonResponse
     {
-        $term = $request->get('term');
+        $term = $request->get('termo');
 
         if (is_null($term)) {
             $this->response['data'] = $this->service->getDevelopers();
