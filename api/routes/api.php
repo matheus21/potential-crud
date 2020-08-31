@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::middleware(
+    [
+        'api'
+    ]
+)->prefix('developers')
+    ->namespace($this->namespace)
+    ->group(function () {
+       Route::get('/', 'DevelopersController@getDevelopers');
+       Route::get('/{id}', 'DevelopersController@getDeveloper');
+       Route::post('/', 'DevelopersController@postDeveloper');
+       Route::put('/{id}', 'DevelopersController@putDeveloper');
+       Route::delete('/{id}', 'DevelopersController@deleteDeveloper');
+    });
