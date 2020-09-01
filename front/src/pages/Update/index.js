@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom'
 import { FiArrowLeft } from 'react-icons/fi'
 import api from '../../services/api'
@@ -11,9 +11,13 @@ export default function Update() {
     const [developer, setDeveloper] = useState([]);
     const { id }  = useParams()
     
-    useEffect(() => {
-        api.get(`developers/${id}`).then(response => {setDeveloper(response.data.data)})
-    })
+    async function getDeveloper() {
+        const result = await api.get(`developers/${id}`);
+        
+        setDeveloper(result.data.data);
+    }
+
+    getDeveloper();
 
     const [nome, setNome] = useState(developer.nome);
     const [sexo, setSexo] = useState(developer.sexo);
@@ -23,7 +27,7 @@ export default function Update() {
 
     const history = useHistory();
 
-    async function handleRegister(e) {
+    async function handleUpdate(e) {
         e.preventDefault();
 
         const data = {nome, sexo, idade, hobby, datanascimento};
@@ -58,7 +62,7 @@ export default function Update() {
 
                 </section>
                 
-                <form onSubmit={handleRegister}>
+                <form onSubmit={handleUpdate}>
 
                 <input value={nome} onChange={e => setNome(e.target.value)} placeholder={developer.nome}/>
                 <input value={sexo} onChange={e => setSexo(e.target.value)} placeholder={developer.sexo} maxLength="1" />

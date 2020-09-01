@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiTrash2 } from 'react-icons/fi';
 
@@ -18,9 +18,12 @@ export default function List () {
     
     const [developers, setDevelopers] = useState([]);
 
-    useEffect(() => {
-        api.get('developers').then(response => {setDevelopers(response.data.data)})
-    })
+    async function getDevelopers() {
+        const result = await api.get('developers');
+        setDevelopers(result.data.data);
+    }
+
+    getDevelopers();
 
     async function handleDeleteDeveloper(id) {
         try {
