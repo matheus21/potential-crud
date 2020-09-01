@@ -32,7 +32,7 @@ O projeto desenvolvido tem a aplicação dividida em duas partes (**api** e **fr
 - front: http://localhost:3006
 - api: http://localhost:8086
 
-Acessando endpoint de developers com paginação e busca por termo:
+Acessando endpoint /developers com paginação e busca por termo:
 > localhost:8086/developers?termo=Q&page=1
 
 ## Para executar os testes unitários:
