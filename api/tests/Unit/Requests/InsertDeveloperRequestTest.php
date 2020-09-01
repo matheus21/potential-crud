@@ -26,7 +26,7 @@ class InsertDeveloperRequestTest extends AbstractRequestTest
             [['sexo'            => 'required|in:M,F']],
             [['idade'           => 'int|required']],
             [['hobby'           => 'required']],
-            [['datanascimento'  => 'required|date_format:"d/m/Y"']]
+            [['datanascimento'  => 'required|date_format:"Y-m-d"']]
         ];
     }
 

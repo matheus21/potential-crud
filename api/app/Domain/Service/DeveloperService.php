@@ -50,8 +50,6 @@ class DeveloperService
 
     public function insertDeveloper(array $data): void
     {
-        $data['datanascimento'] = Carbon::createFromFormat('d/m/Y', $data['datanascimento'])->toDateString();
-
         $result = $this->repository->insertDeveloper($data);
 
         if(!$result) {
@@ -61,8 +59,6 @@ class DeveloperService
 
     public function updateDeveloper(int $id, array $data): void
     {
-        $data['datanascimento'] = Carbon::createFromFormat('d/m/Y', $data['datanascimento'])->toDateString();
-
         $result = $this->repository->updateDeveloper($id, $data);
 
         if(!$result) {

@@ -26,7 +26,7 @@ class UpdateDeveloperRequestTest extends AbstractRequestTest
             [['hobby'           => 'nullable']],
             [['sexo'            => 'in:M,F']],
             [['idade'           => 'int']],
-            [['datanascimento'  => 'date_format:"d/m/Y"']],
+            [['datanascimento'  => 'date_format:"Y-m-d"']],
             [['id'              => 'exists:developers,id']]
         ];
     }

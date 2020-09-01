@@ -117,7 +117,6 @@ class DeveloperServiceTest extends TestCase
         unset($developer['id']);
 
         $this->repository->shouldReceive('insertDeveloper')->with($developer)->once()->andReturn(true);
-        $developer['datanascimento'] = Carbon::createFromFormat('Y-m-d', $developer['datanascimento'])->format('d/m/Y');
         $this->service->insertDeveloper($developer);
     }
 
@@ -133,7 +132,6 @@ class DeveloperServiceTest extends TestCase
         unset($developer['id']);
 
         $this->repository->shouldReceive('insertDeveloper')->with($developer)->once()->andReturn(false);
-        $developer['datanascimento'] = Carbon::createFromFormat('Y-m-d', $developer['datanascimento'])->format('d/m/Y');
         $this->service->insertDeveloper($developer);
     }
 
@@ -147,7 +145,6 @@ class DeveloperServiceTest extends TestCase
         unset($developer['id']);
 
         $this->repository->shouldReceive('updateDeveloper')->with($developerId, $developer)->once()->andReturn(true);
-        $developer['datanascimento'] = Carbon::createFromFormat('Y-m-d', $developer['datanascimento'])->format('d/m/Y');
         $this->service->updateDeveloper($developerId, $developer);
     }
 
@@ -164,7 +161,6 @@ class DeveloperServiceTest extends TestCase
         unset($developer['id']);
 
         $this->repository->shouldReceive('updateDeveloper')->with($developerId, $developer)->once()->andReturn(false);
-        $developer['datanascimento'] = Carbon::createFromFormat('Y-m-d', $developer['datanascimento'])->format('d/m/Y');
         $this->service->updateDeveloper($developerId, $developer);
     }
 

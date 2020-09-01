@@ -1,5 +1,20 @@
 version: '3'
 services:
+   
+   front:
+    container_name: potential-crud-front
+    build: 
+      context: .
+      dockerfile: front.dockerfile
+    stdin_open: true
+    ports:
+      - 3006:3000
+    volumes:
+      - './front:/app'
+      - '/app/node_modules'
+    networks:
+      - potential-crud
+
    api:
     container_name: potential-crud-api
     build: 

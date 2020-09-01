@@ -43,6 +43,8 @@ class DevelopersController extends Controller
         } catch (NotFoundHttpException $e) {
             $this->response['type'] = 'error';
             $this->response['message'] = $e->getMessage();
+
+            return new JsonResponse($this->response, $e->getStatusCode());
         }
 
         return new JsonResponse($this->response, Response::HTTP_OK);
